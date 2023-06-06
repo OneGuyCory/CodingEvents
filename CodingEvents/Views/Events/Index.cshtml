@@ -1,26 +1,45 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
+﻿@using CodingEvents.Models
+@model List<Event>
 <h1>Coding Events</h1>
 
 <p>
     <a asp-controller="Events" asp-action="Add">Add Event</a>
 </p>
 
-@if (ViewBag.events.Count == 0)
+<p>
+    <a asp-controller="Events" asp-action="Delete">Delete Event</a>
+</p>
+
+@if (Model.Count == 0)
 {
     <p>No Events yet!</p>
 }
 
-<ul>
-    @foreach(string e in ViewBag.events)
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            ContactEmail
+        </th>
+    </tr>
+    @foreach (var evt in Model)
     {
-        <li>@e</li>
+        <tr>
+            <td>@evt.Id</td>
+            <td>@evt.Name</td>
+            <td>@evt.Description</td>
+            <td>@evt.ContactEmail</td>
+        </tr>
     }
-</ul>
+</table>
 
 
 
